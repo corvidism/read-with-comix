@@ -22,7 +22,6 @@ class RWC_GUI(InterfaceAction):
         
 	def do_a_thing(self):
 		if not self.gui.current_view().selectionModel().selectedRows() :
-			print "No books selected"
 			self.gui.status_bar.show_message("No books selected", 3000)
 		else:
 			if self.is_library_view():
@@ -67,5 +66,8 @@ class RWC_GUI(InterfaceAction):
 					try:
 						#TODO add setting for custom external viewer
 						subprocess.check_call(['comix',books[0]['symlink']])
-					except subprocess.CalledProcessError:
-						self.gui.status_bar.show_message("Error: comix not found on system.", 3000)				
+					except (subprocess.CalledProcessError,OSError) as e:
+						try:
+							subprocess.check_call(['mcomix',books[0]['symlink']])
+						except:
+							self.gui.status_bar.show_message("Error: comix not found on system.", 3000)				

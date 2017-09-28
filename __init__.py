@@ -5,7 +5,7 @@ from calibre.customize import InterfaceActionBase
 class ReadWithComix(InterfaceActionBase):
 
 	name                = 'Read With Comix' # Name of the plugin
-	description         = 'Creates a folder of symlinks of selected comics so it can be read in sequence by Comix (or possibly other comic readers - untested).'
+	description         = 'Creates a folder of symlinks of selected comics so it can be read in sequence by Comix (or MComix, or anything you symlink to "comix").'
 	supported_platforms = ['linux'] # Platforms this plugin will run on
 	author              = 'Corvidism' # The author of this plugin
 	version             = (1, 0, 0)   # The version number of this plugin
